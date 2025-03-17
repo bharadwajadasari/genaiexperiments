@@ -2,6 +2,8 @@
 
 A React-based web application for efficient project planning, task management, team collaboration, and progress tracking.
 
+> **Note**: This project uses a development branch workflow. All new features and changes are developed in the `development` branch before being merged to `main`.
+
 ## Features
 
 - **Project Management**: Create and manage projects with stack ranking and duration tracking
