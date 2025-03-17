@@ -4,6 +4,8 @@ A React-based web application for efficient project planning, task management, t
 
 ## Features
 
+- **Project Management**: Create and manage projects with stack ranking and duration tracking
+- **Team Capacity Management**: Track and adjust engineer utilization and team capacity
 - **Quarter Planning**: Plan and organize your quarterly objectives and milestones
 - **Task Management**: Create, assign, and track tasks efficiently
 - **Team Collaboration**: Work together seamlessly with your team
@@ -42,17 +44,22 @@ Before you begin, ensure you have the following installed:
 ```
 taskify/
 ├── src/
-│   ├── pages/              # Page components
+│   ├── context/           # Context providers
+│   │   └── EngineerContext.jsx
+│   ├── pages/            # Page components
+│   │   ├── AddProject.jsx
+│   │   ├── AdjustCapacity.jsx
 │   │   ├── Planning.jsx
-│   │   ├── TaskManagement.jsx
-│   │   ├── TeamCollaboration.jsx
-│   │   └── ProgressTracking.jsx
-│   ├── App.jsx            # Main application component
-│   ├── App.css            # Global styles
-│   └── main.jsx           # Application entry point
-├── public/                # Static assets
-├── package.json          # Project dependencies and scripts
-└── vite.config.js        # Vite configuration
+│   │   ├── Projects.jsx
+│   │   └── TeamCapacity.jsx
+│   ├── components/       # Reusable components
+│   │   └── TaskifyIcon.jsx
+│   ├── App.jsx          # Main application component
+│   ├── App.css          # Global styles
+│   └── main.jsx         # Application entry point
+├── public/              # Static assets
+├── package.json        # Project dependencies and scripts
+└── vite.config.js      # Vite configuration
 ```
 
 ## Available Scripts
@@ -67,6 +74,23 @@ taskify/
 - React Router DOM
 - Vite
 - CSS3
+- Context API for state management
+
+## Features in Detail
+
+### Project Management
+- Create new projects with detailed information
+- Stack rank projects for priority management
+- Track project duration in weeks
+- Monitor project status (planned, in-progress, completed, on-hold)
+- View all projects in a grid layout with sorting by priority
+
+### Team Capacity Management
+- Track engineer utilization rates
+- Adjust individual engineer capacity
+- View overall team capacity
+- Monitor team workload distribution
+- Real-time updates of capacity changes
 
 ## Development Guidelines
 
@@ -74,11 +98,13 @@ taskify/
    - Follow the existing code structure
    - Use functional components with hooks
    - Keep components modular and reusable
+   - Utilize Context API for shared state management
 
 2. **Adding New Features**
    - Create new components in the appropriate directories
    - Update routing in `App.jsx` if adding new pages
    - Maintain consistent styling using the existing CSS classes
+   - Add new context providers if needed for state management
 
 3. **Git Workflow**
    - Create feature branches for new development
