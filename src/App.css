@@ -181,73 +181,6 @@
   background-color: #4b5563;
 }
 
-/* Excel Viewer */
-.excel-viewer {
-  padding: 1rem;
-}
-
-.excel-controls {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  align-items: center;
-}
-
-.sheet-selector {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  min-width: 200px;
-}
-
-.excel-table-container {
-  overflow: auto;
-  max-height: calc(100vh - 300px);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: white;
-}
-
-.excel-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.excel-table td {
-  padding: 0.5rem;
-  border: 1px solid #eee;
-  min-width: 100px;
-  max-width: 300px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.excel-cell {
-  position: relative;
-  background: white;
-}
-
-.excel-cell.has-formula {
-  background-color: #f8f9fa;
-  font-style: italic;
-}
-
-.excel-cell:hover {
-  background-color: #f0f0f0;
-}
-
-.excel-placeholder {
-  text-align: center;
-  padding: 2rem;
-  background: white;
-  border: 2px dashed #ddd;
-  border-radius: 4px;
-  color: #666;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .header {
@@ -260,9 +193,5 @@
 
   .features-grid {
     grid-template-columns: 1fr;
-  }
-
-  .excel-table {
-    font-size: 0.875rem;
   }
 }
