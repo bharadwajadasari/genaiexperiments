@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Taskify - Project Planning and Tracking Application
 
 A  React-based web application for efficient project planning, task management, team collaboration, and progress tracking.
@@ -100,3 +101,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For support, please open an issue in the repository or contact the development team.
+=======
+# genaiexperiments
+Leveraging AI to test out my skills
+>>>>>>> c05c0ee4d100869dd511888ab6eace5ff802af87
