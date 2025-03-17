@@ -63,11 +63,16 @@
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .feature-card h3 {
@@ -79,6 +84,45 @@
 .feature-card p {
   color: #6b7280;
   line-height: 1.6;
+}
+
+.feature-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  margin-top: 2rem;
+}
+
+.feature-content h2 {
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.feature-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.feature-content li {
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #4f46e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.back-button:hover {
+  background: #4338ca;
 }
 
 @media (max-width: 768px) {
