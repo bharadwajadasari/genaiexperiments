@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import TaskifyIcon from '../components/TaskifyIcon';
 import { projectService } from '../services/projectService';
 import '../App.css';
 
-const AddProject = () => {
+const EditProject = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [project, setProject] = useState({
     name: '',
     description: '',
@@ -15,8 +16,33 @@ const AddProject = () => {
     stackRank: 1,
     status: 'planned'
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        setLoading(true);
+        const data = await projectService.getProject(id);
+        setProject({
+          name: data.name,
+          description: data.description,
+          startDate: data.start_date,
+          endDate: data.end_date,
+          estimatedWeeks: data.estimated_weeks,
+          stackRank: data.stack_rank,
+          status: data.status
+        });
+      } catch (err) {
+        setError('Failed to load project details');
+        console.error('Error fetching project:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,16 +56,6 @@ const AddProject = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      setError(null);
-
-      // Validate dates
-      const startDate = new Date(project.startDate);
-      const endDate = new Date(project.endDate);
-      if (endDate < startDate) {
-        throw new Error('End date must be after start date');
-      }
-
-      // Convert form data to database format
       const projectData = {
         name: project.name,
         description: project.description,
@@ -50,33 +66,57 @@ const AddProject = () => {
         status: project.status
       };
 
-      console.log('Submitting project data:', projectData);
-      const result = await projectService.createProject(projectData);
-      console.log('Project created successfully:', result);
+      await projectService.updateProject(id, projectData);
       navigate('/projects');
     } catch (err) {
-      console.error('Error creating project:', err);
-      setError(err.message || 'Failed to create project');
+      setError('Failed to update project');
+      console.error('Error updating project:', err);
     } finally {
       setLoading(false);
     }
   };
 
+  if (loading) {
+    return (
+      <div className="page-container">
+        <header className="header">
+          <TaskifyIcon />
+          <h1>Edit Project</h1>
+        </header>
+        <main className="main-content">
+          <div className="loading">Loading...</div>
+        </main>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="page-container">
+        <header className="header">
+          <TaskifyIcon />
+          <h1>Edit Project</h1>
+        </header>
+        <main className="main-content">
+          <div className="error-message">{error}</div>
+          <Link to="/projects" className="action-button">
+            Return to Projects
+          </Link>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="page-container">
       <header className="header">
         <TaskifyIcon />
-        <h1>Add New Project</h1>
+        <h1>Edit Project</h1>
       </header>
 
       <main className="main-content">
         <div className="form-container">
-          <h2>Project Details</h2>
-          {error && (
-            <div className="error-message">
-              {error}
-            </div>
-          )}
+          <h2>Update Project Details</h2>
           <form onSubmit={handleSubmit} className="project-form">
             <div className="form-group">
               <label htmlFor="name">Project Name</label>
@@ -172,7 +212,7 @@ const AddProject = () => {
 
             <div className="form-actions">
               <button type="submit" className="action-button" disabled={loading}>
-                {loading ? 'Creating...' : 'Create Project'}
+                {loading ? 'Updating...' : 'Update Project'}
               </button>
               <Link to="/projects" className="action-button secondary">
                 Cancel
@@ -185,4 +225,4 @@ const AddProject = () => {
   );
 };
 
-export default AddProject; 
+export default EditProject; 
