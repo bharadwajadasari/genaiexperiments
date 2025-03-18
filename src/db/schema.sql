@@ -1,15 +1,13 @@
 -- Create projects table
 CREATE TABLE IF NOT EXISTS projects (
     id SERIAL PRIMARY KEY,
-    project_name VARCHAR(255) NOT NULL,
-    status VARCHAR(50) NOT NULL,
-    priority VARCHAR(50) NOT NULL,
-    team VARCHAR(100) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    progress INTEGER DEFAULT 0,
-    blockers TEXT,
-    path_to_green TEXT,
+    estimated_weeks DECIMAL(5,2) NOT NULL,
+    stack_rank INTEGER NOT NULL,
+    status VARCHAR(50) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
@@ -27,7 +25,7 @@ CREATE TABLE IF NOT EXISTS highlights (
 
 -- Create indexes for better query performance
 CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);
-CREATE INDEX IF NOT EXISTS idx_projects_priority ON projects(priority);
+CREATE INDEX IF NOT EXISTS idx_projects_priority ON projects(stack_rank);
 CREATE INDEX IF NOT EXISTS idx_highlights_type ON highlights(type);
 
 -- Create function to update updated_at timestamp

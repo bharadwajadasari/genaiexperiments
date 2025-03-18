@@ -1,130 +1,123 @@
-# Taskify - Project Planning and Tracking Application
+# Project Planning Application
 
-A React-based web application for efficient project planning, task management, team collaboration, and progress tracking.
-
-> **Note**: This project uses a development branch workflow. All new features and changes are developed in the `development` branch before being merged to `main`.
+A modern web application for managing project planning, team capacity, and resource allocation.
 
 ## Features
 
-- **Project Management**: Create and manage projects with stack ranking and duration tracking
-- **Team Capacity Management**: Track and adjust engineer utilization and team capacity
-- **Quarter Planning**: Plan and organize your quarterly objectives and milestones
-- **Task Management**: Create, assign, and track tasks efficiently
-- **Team Collaboration**: Work together seamlessly with your team
-- **Progress Tracking**: Monitor project progress in real-time
+### Project Management
+- Create, view, edit, and delete projects
+- Detailed project information including:
+  - Project name and description
+  - Timeline (start date, end date, duration)
+  - Priority (stack rank)
+  - Status tracking (planned, in-progress, completed, on-hold)
+  - Creation and update timestamps
+- Project prioritization with stack ranking
+- Status visualization with color-coded badges
 
-## Prerequisites
+### Team Capacity
+- View team utilization metrics
+- Track individual engineer capacity
+- Project distribution visualization
+- Capacity adjustment tools
 
-Before you begin, ensure you have the following installed:
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+### Planning
+- Quarterly planning view
+- Project timeline visualization
+- Key metrics dashboard
+- Quick action buttons for common tasks
+
+## Tech Stack
+
+- Frontend:
+  - React 19
+  - Vite
+  - React Router
+  - CSS3 with modern features
+
+- Backend:
+  - Node.js
+  - Express
+  - PostgreSQL
+  - RESTful API
 
 ## Getting Started
 
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-   cd taskify
-   ```
+### Prerequisites
 
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+- Node.js (v18 or higher)
+- PostgreSQL
+- npm or yarn
 
-3. **Start the Development Server**
-   ```bash
-   npm run dev
-   ```
+### Installation
 
-4. **Open the Application**
-   - Open your browser and navigate to `http://localhost:5173`
-   - The application should now be running locally
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd genaiexperiments
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+Create a `.env` file in the root directory with the following variables:
+```
+VITE_AZURE_DB_USER=your_db_user
+VITE_AZURE_DB_HOST=your_db_host
+VITE_AZURE_DB_NAME=your_db_name
+VITE_AZURE_DB_PASSWORD=your_db_password
+VITE_AZURE_DB_PORT=your_db_port
+```
+
+4. Set up the database:
+```bash
+npm run db:setup-full
+```
+
+### Running the Application
+
+1. Start both frontend and backend servers:
+```bash
+npm run dev:all
+```
+
+This will start:
+- Frontend server on http://localhost:5173 (or next available port)
+- Backend server on http://localhost:3000
+
+2. Access the application in your browser at http://localhost:5173
+
+## Available Scripts
+
+- `npm run dev:local` - Start frontend development server
+- `npm run dev:all` - Start both frontend and backend servers
+- `npm run db:setup-full` - Set up the database schema and tables
+- `npm run db:reset-projects` - Reset the projects table
+- `npm run build` - Build the application for production
+- `npm run test` - Run tests
+- `npm run lint` - Run linting
 
 ## Project Structure
 
 ```
-taskify/
-├── src/
-│   ├── context/           # Context providers
-│   │   └── EngineerContext.jsx
-│   ├── pages/            # Page components
-│   │   ├── AddProject.jsx
-│   │   ├── AdjustCapacity.jsx
-│   │   ├── Planning.jsx
-│   │   ├── Projects.jsx
-│   │   └── TeamCapacity.jsx
-│   ├── components/       # Reusable components
-│   │   └── TaskifyIcon.jsx
-│   ├── App.jsx          # Main application component
-│   ├── App.css          # Global styles
-│   └── main.jsx         # Application entry point
-├── public/              # Static assets
-├── package.json        # Project dependencies and scripts
-└── vite.config.js      # Vite configuration
+src/
+├── components/     # Reusable UI components
+├── pages/         # Page components
+├── services/      # API and service functions
+├── context/       # React context providers
+├── db/           # Database setup and migrations
+└── App.jsx       # Main application component
 ```
-
-## Available Scripts
-
-- `npm run dev` - Start the development server
-- `npm run build` - Build the application for production
-- `npm run preview` - Preview the production build locally
-
-## Technologies Used
-
-- React.js
-- React Router DOM
-- Vite
-- CSS3
-- Context API for state management
-
-## Features in Detail
-
-### Project Management
-- Create new projects with detailed information
-- Stack rank projects for priority management
-- Track project duration in weeks
-- Monitor project status (planned, in-progress, completed, on-hold)
-- View all projects in a grid layout with sorting by priority
-
-### Team Capacity Management
-- Track engineer utilization rates
-- Adjust individual engineer capacity
-- View overall team capacity
-- Monitor team workload distribution
-- Real-time updates of capacity changes
-
-## Development Guidelines
-
-1. **Code Style**
-   - Follow the existing code structure
-   - Use functional components with hooks
-   - Keep components modular and reusable
-   - Utilize Context API for shared state management
-
-2. **Adding New Features**
-   - Create new components in the appropriate directories
-   - Update routing in `App.jsx` if adding new pages
-   - Maintain consistent styling using the existing CSS classes
-   - Add new context providers if needed for state management
-
-3. **Git Workflow**
-   - Create feature branches for new development
-   - Use meaningful commit messages
-   - Keep commits focused and atomic
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Create a new branch for your feature
+2. Make your changes
+3. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support, please open an issue in the repository or contact the development team.
+This project is licensed under the MIT License.

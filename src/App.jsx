@@ -8,6 +8,8 @@ import TeamCapacity from './pages/TeamCapacity'
 import AdjustCapacity from './pages/AdjustCapacity'
 import AddProject from './pages/AddProject'
 import Projects from './pages/Projects'
+import EditProject from './pages/EditProject'
+import ProjectDetails from './pages/ProjectDetails'
 import { EngineerProvider } from './context/EngineerContext'
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/adjust-capacity" element={<AdjustCapacity />} />
           <Route path="/add-project" element={<AddProject />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/edit-project/:id" element={<EditProject />} />
+          <Route path="/project/:id" element={<ProjectDetails />} />
         </Routes>
       </Router>
     </EngineerProvider>
